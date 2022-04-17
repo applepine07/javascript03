@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <script src="./js/data.js"></script>
+
+</head>
+
+<body>
+<h3>各種javascript物件取值辨析(會是變數常數或字串)</h3>
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 先載入 END-->
+
+    <script>
+
+
+
+
+        $(document).ready(function () {
+
+            const other = "abc";
+            const name = "constName";
+            // ↓要記得放key，不然會以為是變數
+            // key不加點點，會以為是變數
+            const myObj20220120 = {
+                'name': 'Amy',
+                'tel': '0911-111-111',
+                other: '55688',
+                'constName': 'constNameValue',
+            }
+
+            console.log('myObj20220120-1', myObj20220120);
+            console.log('myObj20220120-2', myObj20220120['name']);
+            console.log('myObj20220120-3', myObj20220120.name);
+            // ↑23相同，正確取值，第3個是變數，但第2個比較好
+            console.log('myObj20220120-4', myObj20220120[name]);
+            // ↑4 它以為是常數
+            console.log('myObj20220120-5', myObj20220120[`${name}`]);
+            // ↑5這是反引號喔，它以為是常數，中括號裡可以塞變數
+            console.log('myObj20220120-6', myObj20220120[name]);
+            // ↑藍色是常數，它以為是常數
+            console.log('myObj20220120-7', myObj20220120[other]);
+            // ↑藍色是常數，它以為是常數，卻是undefined和第6行不同，要問，★★★
+            console.log('myObj20220120-8', myObj20220120['other']);
+            // ↑字串，所以取得到值，因為物件裡的key本就是字串
+        })
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
